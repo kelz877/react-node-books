@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 
-
 class DisplayBooks extends Component {
 
     constructor(props) {

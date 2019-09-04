@@ -6,11 +6,8 @@ const cors = require('cors');
 
 const PORT = process.env.PORT || 8080
 
-
 app.use(express.json())
 app.use(cors())
-
-//create a GET route
 
 app.get('/books', (req, res) => {
     models.Book.findAll().then(books =>{
@@ -18,15 +15,23 @@ app.get('/books', (req, res) => {
     })
 })
 
-// let book = models.Book.build({
-    //     title: "Test 2",
-    //     genre: "Test 2",
-    //     publisher: "My Test 2",
-    //     year: "2017",
-    //     imageURL: "test.com"
-    // })
+app.post('/books', (req, res) => {
     
-    // book.save()
+    let title = req.body.title
+    let genre = req.body.genre
+    let publisher = req.body.publisher
+    let year = req.body.year
+    let imageURL = req.body.imageURL
+
+    let book = models.Book.build({
+        title, genre, publisher, year, imageURL
+    })
+
+    book.save().then(savedBook => {
+        res.json({success: true})
+    })
+
+})
 
 app.listen(PORT, () => {
     console.log("Port is running")
