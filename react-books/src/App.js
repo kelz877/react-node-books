@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DisplayBooks from './DisplayBooks'
+import AddBook from './AddBook';
 import './App.css';
 
 class App extends Component {
@@ -28,10 +29,9 @@ class App extends Component {
   render() {
     return <div>
             <DisplayBooks books={this.state.books} />
+            <AddBook />
           </div>
   }
 
-
 }
-
 export default App;
