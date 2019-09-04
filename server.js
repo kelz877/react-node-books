@@ -49,13 +49,15 @@ app.post('/books', (req, res) => {
 
 
 
-app.post('/books', (req, res) => {
+app.post('/delete-book', (req, res) => {
+
     let book_id = req.body.id
+    console.log(book_id)
     models.Book.destroy({
         where: {
             id: book_id
         }
-    }).then(result => console.log(result))
+    })
     res.send("Deleted")
 })
 

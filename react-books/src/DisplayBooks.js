@@ -6,10 +6,26 @@ class DisplayBooks extends Component {
         super(props)
     }
 
+    deleteBook = (id) => {
+        fetch('http://localhost:8080/delete-book', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id
+            })
+        })
+    }
+
     render() {
 
         let bookItems = this.props.books.map(book => {
-            return <div>{book.title}</div>
+            return (<div>
+                    <div>{book.title}</div>
+                    <button onClick={() => this.deleteBook(book.id)}>Delete</button>
+                    </div>
+            )
         })
 
         return <div>
