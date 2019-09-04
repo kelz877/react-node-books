@@ -1,5 +1,7 @@
+
 const express = require('express')
 const app = express();
+const models = require('./models');
 
 const PORT = process.env.PORT || 8080
 
@@ -17,3 +19,13 @@ app.listen(PORT, () => {
 app.get('/express_backend', (req, res) => {
     res.send({ express: "The backend is almsot connected to REACT"})
 })
+
+// let book = models.Book.build({
+//     title: "Test 2",
+//     genre: "Test 2",
+//     publisher: "My Test 2",
+//     year: "2017",
+//     imageURL: "test.com"
+// })
+
+// book.save()
