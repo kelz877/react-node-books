@@ -18,12 +18,19 @@ class DisplayBooks extends Component {
         })
     }
 
+
     render() {
 
         let bookItems = this.props.books.map(book => {
             return (<div>
-                    <div>{book.title}</div>
-                    <button onClick={() => this.deleteBook(book.id)}>Delete</button>
+                    <div>
+                        <img src={book.imageURL}/>
+                        <span>{book.title}</span>
+                        <span>{book.author}</span>
+                        <span>{book.year}</span>
+                    </div>
+                    <button onClick={() => this.deleteBook(book.id)}>Delete Book</button>
+                    {/* <button onClick={()=> this.renderUpdateForm(book.id)}>Update Book</button> */}
                     </div>
             )
         })

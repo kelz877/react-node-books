@@ -18,13 +18,14 @@ app.get('/books', (req, res) => {
 app.post('/books', (req, res) => {
     
     let title = req.body.title
+    let author = req.body.author
     let genre = req.body.genre
     let publisher = req.body.publisher
     let year = req.body.year
     let imageURL = req.body.imageURL
 
     let book = models.Book.build({
-        title, genre, publisher, year, imageURL
+        title, author, genre, publisher, year, imageURL
     })
 
     book.save().then(savedBook => {
@@ -32,6 +33,23 @@ app.post('/books', (req, res) => {
     })
 
 })
+
+// app.post('/update-book', (req,res) => {
+
+//     let title = req.body.title
+//     let genre = req.body.genre
+//     let publisher = req.body.publisher
+//     let year = req.body.year
+//     let imageURL = req.body.imageURL
+
+//     let book = models.Book.update({
+//         title, genre, publisher, year, imageURL
+//     })
+
+//     book.save().then(savedBook => {
+//         res.json({success: true})
+//     })
+// })
 
 
 

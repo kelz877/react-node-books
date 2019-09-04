@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class AddBook extends Component {
+class UpdateBook extends Component {
 
     constructor(props) {
         super(props)
@@ -14,6 +14,18 @@ class AddBook extends Component {
         }
     }
 
+    updateBook = (id) => {
+        fetch('http://localhost:8080/delete-book', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id
+            })
+        })
+    }
+
     handleSave = () => {
 
         fetch('http://localhost:8080/books', {
@@ -23,7 +35,6 @@ class AddBook extends Component {
             },
             body: JSON.stringify({
                 title: this.state.title,
-                author: this.state.author,
                 genre: this.state.genre,
                 publisher: this.state.publisher,
                 year: this.state.year,
@@ -32,7 +43,6 @@ class AddBook extends Component {
         }).then(response => {
             this.setState({
                 title: '',
-                author: '',
                 genre: '',
                 publisher: '',
                 year: '',
@@ -51,15 +61,14 @@ class AddBook extends Component {
     render() {
         return  <div>
                     <input type="text" name="title" value={this.state.title} placeholder="Enter book title" onChange={this.handleTextBoxChange} />
-                    <input type="text" name="author" value={this.state.author} placeholder="Enter book author" onChange={this.handleTextBoxChange} />
                     <input type="genre" name="genre" value={this.state.genre} placeholder="Enter book genre" onChange={this.handleTextBoxChange} />
                     <input type="text" name="publisher" value={this.state.publisher} placeholder="Enter book publisher" onChange={this.handleTextBoxChange} />
                     <input type="text" name="year" value={this.state.year} placeholder="Enter book year" onChange={this.handleTextBoxChange} />
                     <input type="text" name="imageURL" value={this.state.imageURL}
                     placeholder="Enter book image URL" onChange={this.handleTextBoxChange} />
-                    <button onClick={this.handleSave}>Add Book</button>
+                    <button onClick={this.handleSave}>Update Book</button>
                 </div>  
     }
 }
 
-export default AddBook;
+export default UpdateBook;
