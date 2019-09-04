@@ -28,6 +28,47 @@ app.get('/books', (req, res) => {
     
     // book.save()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.post('/books', (req, res) => {
+    let book_id = req.body.id
+    models.Book.destroy({
+        where: {
+            id: book_id
+        }
+    }).then(result => console.log(result))
+    res.send("Deleted")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(PORT, () => {
     console.log("Port is running")
 })
