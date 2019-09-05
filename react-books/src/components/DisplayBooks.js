@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 
-class DisplayBooks extends Component {
+export class DisplayBooks extends Component {
 
     constructor(props) {
         super(props)
     }
+
 
     deleteBook = (id) => {
         fetch('http://localhost:8080/delete-book', {
@@ -42,4 +43,3 @@ class DisplayBooks extends Component {
     }
 }
 
-export default DisplayBooks;

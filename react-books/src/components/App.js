@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import DisplayBooks from './DisplayBooks'
+import {DisplayBooks} from './DisplayBooks';
 import AddBook from './AddBook';
+import '../css/App.css'
+import {Route} from 'react-router-dom'
 // import UpdateBook from './UpdateBook'
-import './App.css';
+
 
 class App extends Component {
 
@@ -21,6 +23,7 @@ class App extends Component {
     fetch('http://localhost:8080/books')
     .then(response => response.json())
     .then(json => {
+      console.log(json)
       this.setState({
         books: json
       })
@@ -29,8 +32,8 @@ class App extends Component {
 
   render() {
     return <div>
-            <DisplayBooks books={this.state.books} />
-            <AddBook />
+            <Route path="/" exact component={AddBook} />
+            <Route path="/books" render = {() => <DisplayBooks books = {this.state.books} /> }/>
           </div>
   }
 
