@@ -24,7 +24,7 @@ export class BaseLayout extends Component {
     render() {
         return <div>
                 <Menu />
-                {/* {this.props.children} */}
+                {this.props.children}
                 <Footer />
 
         </div>
